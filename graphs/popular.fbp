@@ -1,0 +1,9 @@
+title: Instagram Popular
+description: Simple Fetching of Popular info
+
+Api(instagram/api)
+
+ -> client_id Api
+<string> -> client_secret Api
+
+Api instagram -> <Instagram>

@@ -24,7 +24,7 @@
         "type": "object"
       },
       "out": {
-        "title": "Pagination",
+        "title": "Data",
         "type": "object"
       },
       "pagination": {

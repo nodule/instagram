@@ -31,7 +31,7 @@
         "type": "object"
       },
       "out": {
-        "title": "Pagination",
+        "title": "Data",
         "type": "array"
       },
       "pagination": {

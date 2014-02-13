@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "ns": "instagram",
+  "description": "Instagram API",
+  "phrases": {
+    "active": "Using instagram api"
+  },
+  "require": {
+    "instagram-node-lib": "0.x.x"
+  },
+  "ports": {
+    "input": {
+      "client_id": {
+        "title": "Client ID",
+        "type": "string",
+        "required": true
+      },
+      "client_secret": {
+        "title": "Client Secret",
+        "type": "string",
+        "required": true
+      }
+    },
+    "output": {
+      "instagram": {
+        "title": "Instagram",
+        "type": "Instagram"
+      }
+    }
+  }
+}

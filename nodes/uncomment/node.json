@@ -1,0 +1,54 @@
+{
+  "name": "uncomment",
+  "ns": "instagram",
+  "description": "Remove a comment on a media item",
+  "phrases": {
+    "active": "Removing comment"
+  },
+  "ports": {
+    "input": {
+      "instagram": {
+        "title": "InstagramID",
+        "type": "Instagram",
+        "required": true
+      },
+      "options": {
+        "type": "object",
+        "title": "options",
+        "required": true,
+        "properties": {
+          "media_id": {
+            "title": "Media ID",
+            "type": "number",
+            "required": true
+          },
+          "comment_id": {
+            "title": "Comment ID",
+            "type": "number",
+            "required": true
+          }
+        }
+      }
+    },
+    "output": {
+      "error": {
+        "title": "Error",
+        "type": "object"
+      },
+      "out": {
+        "title": "Data",
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Pagination",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

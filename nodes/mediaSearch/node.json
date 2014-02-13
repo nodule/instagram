@@ -1,0 +1,59 @@
+{
+  "name": "mediaSearch",
+  "ns": "instagram",
+  "description": "With a latitude and longitude find nearby media by geography.",
+  "phrases": {
+    "active": "Fetching media"
+  },
+  "ports": {
+    "input": {
+      "instagram": {
+        "title": "InstagramID",
+        "type": "Instagram",
+        "required": true
+      },
+      "options": {
+        "type": "object",
+        "title": "options",
+        "required": true,
+        "properties": {
+          "lat": {
+            "title": "Latitude",
+            "type": "number",
+            "required": true
+          },
+          "lng": {
+            "title": "Longitude",
+            "type": "number",
+            "required": true
+          },
+          "distance": {
+            "title": "Distance",
+            "type": "number",
+            "default": null
+          }
+        }
+      }
+    },
+    "output": {
+      "error": {
+        "title": "Error",
+        "type": "object"
+      },
+      "out": {
+        "title": "Data",
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Pagination",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

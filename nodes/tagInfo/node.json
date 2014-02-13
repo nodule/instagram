@@ -1,0 +1,42 @@
+{
+  "name": "tagInfo",
+  "ns": "instagram",
+  "description": "Instagram Tag Info",
+  "phrases": {
+    "active": "Fetching tag information"
+  },
+  "ports": {
+    "input": {
+      "instagram": {
+        "title": "InstagramID",
+        "type": "Instagram",
+        "required": true
+      },
+      "tag": {
+        "title": "Tag",
+        "type": "string",
+        "required": true
+      }
+    },
+    "output": {
+      "error": {
+        "title": "Error",
+        "type": "object"
+      },
+      "out": {
+        "title": "Data",
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Pagination",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

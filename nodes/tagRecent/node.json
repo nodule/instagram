@@ -1,0 +1,42 @@
+{
+  "name": "tagRecent",
+  "ns": "instagram",
+  "description": "Get media tagged with the tag recently",
+  "phrases": {
+    "active": "Fetching media with tag {{input.tag}}"
+  },
+  "ports": {
+    "input": {
+      "instagram": {
+        "title": "InstagramID",
+        "type": "Instagram",
+        "required": true
+      },
+      "tag": {
+        "title": "Tag",
+        "type": "string",
+        "required": true
+      }
+    },
+    "output": {
+      "error": {
+        "title": "Error",
+        "type": "object"
+      },
+      "out": {
+        "title": "Data",
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Pagination",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

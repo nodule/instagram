@@ -1,0 +1,49 @@
+{
+  "name": "like",
+  "ns": "instagram",
+  "description": "Like a media item",
+  "phrases": {
+    "active": "Liking media"
+  },
+  "ports": {
+    "input": {
+      "instagram": {
+        "title": "InstagramID",
+        "type": "Instagram",
+        "required": true
+      },
+      "options": {
+        "type": "object",
+        "title": "options",
+        "required": true,
+        "properties": {
+          "media_id": {
+            "title": "Media ID",
+            "type": "number",
+            "required": true
+          }
+        }
+      }
+    },
+    "output": {
+      "error": {
+        "title": "Error",
+        "type": "object"
+      },
+      "out": {
+        "title": "Data",
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Pagination",
+            "type": "array"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

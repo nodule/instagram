@@ -1,0 +1,37 @@
+{
+  "name": "mediaPopular",
+  "ns": "instagram",
+  "description": "Get a set of 32 current popular media, each with it's associated likes and comments.",
+  "phrases": {
+    "active": "Fetching popular media"
+  },
+  "ports": {
+    "input": {
+      "instagram": {
+        "title": "InstagramID",
+        "type": "Instagram",
+        "required": true
+      }
+    },
+    "output": {
+      "error": {
+        "title": "Error",
+        "type": "object"
+      },
+      "out": {
+        "title": "Data",
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Pagination",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

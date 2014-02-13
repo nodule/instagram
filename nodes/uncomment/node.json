@@ -35,8 +35,8 @@
         "title": "Error",
         "type": "object"
       },
-      "data": {
-        "title": "Pagination",
+      "out": {
+        "title": "Data",
         "type": "object"
       },
       "pagination": {

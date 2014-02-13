@@ -9,4 +9,4 @@ Api(instagram/api), MediaPopular(instagram/mediaPopular)
 Api instagram -> instagram MediaPopular
 
 MediaPopular error -> msg Log(console/log)
-MediaPopular out   -> msg Log
+MediaPopular data  -> msg Log

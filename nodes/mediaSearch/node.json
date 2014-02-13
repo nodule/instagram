@@ -40,7 +40,7 @@
         "title": "Error",
         "type": "object"
       },
-      "data": {
+      "out": {
         "title": "Pagination",
         "type": "object"
       },

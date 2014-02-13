@@ -24,7 +24,7 @@
     "output": {
       "instagram": {
         "title": "Instagram",
-        "type": "Instagram"
+        "type": "InstagramAPI"
       }
     }
   }

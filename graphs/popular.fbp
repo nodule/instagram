@@ -1,9 +1,12 @@
 title: Instagram Popular
 description: Simple Fetching of Popular info
 
-Api(instagram/api)
+Api(instagram/api), MediaPopular(instagram/mediaPopular)
 
- -> client_id Api
-<string> -> client_secret Api
+'8e468be04b0b4b04a5706736e3c498e2' -> client_id Api
+'875a04efd82445af90fab5097bb7fd03' -> client_secret Api
 
-Api instagram -> <Instagram>
+Api instagram -> instagram MediaPopular
+
+MediaPopular error -> msg Log(console/log)
+MediaPopular out   -> msg Log

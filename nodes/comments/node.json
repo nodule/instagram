@@ -30,19 +30,13 @@
         "title": "Error",
         "type": "object"
       },
-      "out": {
-        "title": "Data",
-        "type": "object",
-        "properties": {
-          "data": {
-            "title": "Pagination",
-            "type": "array"
-          },
-          "pagination": {
-            "title": "Pagination",
-            "type": "object"
-          }
-        }
+      "data": {
+        "title": "Pagination",
+        "type": "array"
+      },
+      "pagination": {
+        "title": "Pagination",
+        "type": "object"
       }
     }
   }

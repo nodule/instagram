@@ -13,7 +13,7 @@
       "client_id": {
         "title": "Client ID",
         "type": "string",
-        "required": true
+        "required": false
       },
       "client_secret": {
         "title": "Client Secret",

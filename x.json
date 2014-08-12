@@ -1,0 +1,562 @@
+{
+  "name": "instagram",
+  "description": "Instagram for Chiχ",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/instagram.git"
+  },
+  "dependencies": {
+    "instagram-node-lib": "0.x.x"
+  },
+  "nodes": [
+    {
+      "ports": {
+        "input": {
+          "client_id": {
+            "title": "Client ID",
+            "type": "string",
+            "required": false
+          },
+          "client_secret": {
+            "title": "Client Secret",
+            "type": "string",
+            "required": false
+          }
+        },
+        "output": {
+          "instagram": {
+            "title": "Instagram",
+            "type": "InstagramAPI"
+          }
+        }
+      },
+      "require": {
+        "instagram-node-lib": "0.x.x"
+      },
+      "phrases": {
+        "active": "Using instagram api"
+      },
+      "description": "Instagram API",
+      "ns": "instagram",
+      "name": "api",
+      "fn": "if(input.client_id) instagram_node_lib.set('client_id', input.client_id);\nif(input.client_secret) instagram_node_lib.set('client_secret', input.client_secret);\noutput.instagram = instagram_node_lib;\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "options",
+            "required": true,
+            "properties": {
+              "media_id": {
+                "title": "Media ID",
+                "type": "number",
+                "required": true
+              },
+              "text": {
+                "title": "Comment",
+                "type": "string",
+                "required": true
+              }
+            }
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Commenting on media"
+      },
+      "description": "Comment on a media item",
+      "ns": "instagram",
+      "name": "comment",
+      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.comment(opts);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "options",
+            "required": true,
+            "properties": {
+              "media_id": {
+                "title": "Media ID",
+                "type": "number",
+                "required": true
+              }
+            }
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "array"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Fetching comments"
+      },
+      "description": "Get comments on a media",
+      "ns": "instagram",
+      "name": "comments",
+      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.comments(opts);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "options",
+            "required": true,
+            "properties": {
+              "media_id": {
+                "title": "Media ID",
+                "type": "number",
+                "required": true
+              }
+            }
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "array"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Liking media"
+      },
+      "description": "Like a media item",
+      "ns": "instagram",
+      "name": "like",
+      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.like(opts);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "options",
+            "required": true,
+            "properties": {
+              "media_id": {
+                "title": "Media ID",
+                "type": "number",
+                "required": true
+              }
+            }
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "array"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Getting Likers"
+      },
+      "description": "Returns an array of likers for the media",
+      "ns": "instagram",
+      "name": "likes",
+      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.likes(opts);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "options",
+            "required": true,
+            "properties": {
+              "media_id": {
+                "title": "Media ID",
+                "type": "number",
+                "required": true
+              }
+            }
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Fetching media"
+      },
+      "description": "Get the metadata for a single medai item by media id.",
+      "ns": "instagram",
+      "name": "mediaInfo",
+      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.likes(opts);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Fetching popular media"
+      },
+      "description": "Get a set of 32 current popular media, each with it's associated likes and comments.",
+      "ns": "instagram",
+      "name": "mediaPopular",
+      "fn": "output = function(cb) {\n  input.instagram.media.popular({\n    complete: function(data, pagination) {\n      cb({ out: data, pagination: pagination });\n      done();\n    },\n    error: function(err) {\n      cb({ error: err });\n    }\n  });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "options",
+            "required": true,
+            "properties": {
+              "lat": {
+                "title": "Latitude",
+                "type": "number",
+                "required": true
+              },
+              "lng": {
+                "title": "Longitude",
+                "type": "number",
+                "required": true
+              },
+              "distance": {
+                "title": "Distance",
+                "type": "number",
+                "default": null
+              }
+            }
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Fetching media"
+      },
+      "description": "With a latitude and longitude find nearby media by geography.",
+      "ns": "instagram",
+      "name": "mediaSearch",
+      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.info(opts);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "tag": {
+            "title": "Tag",
+            "type": "string",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Fetching tag information"
+      },
+      "description": "Instagram Tag Info",
+      "ns": "instagram",
+      "name": "tagInfo",
+      "fn": "output = function(cb) {\n  input.instagram.tags.info({\n    name: input.tag,\n    complete: function(data, pagination) {\n      cb({ out: data, pagination: pagination });\n      done();\n    },\n    error: function(err) {\n      cb({ error: err });\n    }\n  });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "tag": {
+            "title": "Tag",
+            "type": "string",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Fetching media with tag {{input.tag}}"
+      },
+      "description": "Get media tagged with the tag recently",
+      "ns": "instagram",
+      "name": "tagRecent",
+      "fn": "output = function(cb) {\n  input.instagram.tags.recent({\n    name: input.tag,\n    complete: function(data, pagination) {\n      cb({ out: data, pagination: pagination });\n      done();\n    },\n    error: function(err) {\n      cb({ error: err });\n    }\n  });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "tag": {
+            "title": "Tag",
+            "type": "string",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Searching tags like {{input.tag}}"
+      },
+      "description": "Search for matching tags by name",
+      "ns": "instagram",
+      "name": "tagSearch",
+      "fn": "output = function(cb) {\n  input.instagram.tags.search({\n    q: input.tag,\n    complete: function(data, pagination) {\n      cb({ out: data, pagination: pagination });\n      done();\n    },\n    error: function(err) {\n      cb({ error: err });\n    }\n  });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "options",
+            "required": true,
+            "properties": {
+              "media_id": {
+                "title": "Media ID",
+                "type": "number",
+                "required": true
+              },
+              "comment_id": {
+                "title": "Comment ID",
+                "type": "number",
+                "required": true
+              }
+            }
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "object"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Removing comment"
+      },
+      "description": "Remove a comment on a media item",
+      "ns": "instagram",
+      "name": "uncomment",
+      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.uncomment(opts);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "instagram": {
+            "title": "InstagramID",
+            "type": "InstagramAPI",
+            "required": true
+          },
+          "options": {
+            "type": "object",
+            "title": "options",
+            "required": true,
+            "properties": {
+              "media_id": {
+                "title": "Media ID",
+                "type": "number",
+                "required": true
+              }
+            }
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "Data",
+            "type": "array"
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "object"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Unliking media"
+      },
+      "description": "Unlike a media item",
+      "ns": "instagram",
+      "name": "unlike",
+      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.unlike(opts);\n};\n"
+    }
+  ],
+  "twigs": []
+}

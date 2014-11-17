@@ -5,9 +5,6 @@
   "phrases": {
     "active": "Using instagram api"
   },
-  "require": {
-    "instagram-node-lib": "0.x.x"
-  },
   "ports": {
     "input": {
       "client_id": {
@@ -26,6 +23,11 @@
         "title": "Instagram",
         "type": "InstagramAPI"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "instagram-node-lib": "0.x.x"
     }
   }
 }

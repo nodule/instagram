@@ -2,11 +2,11 @@ output = function(cb) {
   $.instagram.tags.search({
     q: $.tag,
     complete: function(val, pagination) {
-      cb({ out: val, pagination: pagination });
+      cb({ out: $.create(val), pagination: $.create(pagination) });
       done();
     },
     error: function(err) {
-      cb({ error: err });
+      cb({ error: $.create(err) });
     }
   });
 };

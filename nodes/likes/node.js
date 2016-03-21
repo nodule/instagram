@@ -1,14 +1,13 @@
 output = function(cb) {
-
   var opts = $.options;
 
   opts.complete = function(val, pagination) {
-    cb({ out: val, pagination: pagination });
+    cb({ out: $.create(val), pagination: $.create(pagination) });
     done();
   };
 
   opts.error = function(err) {
-    cb({ error: err });
+    cb({ error: $.create(err) });
   };
 
   $.instagram.media.likes(opts);

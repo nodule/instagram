@@ -1,6 +1,6 @@
 output = function(cb) {
-  input.instagram.tags.info({
-    name: input.tag,
+  $.instagram.tags.info({
+    name: $.tag,
     complete: function(val, pagination) {
       cb({ out: val, pagination: pagination });
       done();

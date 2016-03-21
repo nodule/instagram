@@ -1,6 +1,6 @@
 output = function(cb) {
-  input.instagram.tags.search({
-    q: input.tag,
+  $.instagram.tags.search({
+    q: $.tag,
     complete: function(val, pagination) {
       cb({ out: val, pagination: pagination });
       done();

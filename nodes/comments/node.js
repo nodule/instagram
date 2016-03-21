@@ -1,6 +1,6 @@
 output = function(cb) {
 
-  var opts = input.options;
+  var opts = $.options;
 
   opts.complete = function(val, pagination) {
     cb({ out: val, pagination: pagination });
@@ -11,5 +11,5 @@ output = function(cb) {
     cb({ error: err });
   };
 
-  input.instagram.media.comments(opts);
+  $.instagram.media.comments(opts);
 };

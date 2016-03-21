@@ -1,3 +1,3 @@
-if(input.client_id) instagram_node_lib.set('client_id', input.client_id);
-if(input.client_secret) instagram_node_lib.set('client_secret', input.client_secret);
+if($.client_id) instagram_node_lib.set('client_id', $.client_id);
+if($.client_secret) instagram_node_lib.set('client_secret', $.client_secret);
 output.instagram = instagram_node_lib;

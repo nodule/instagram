@@ -1,5 +1,5 @@
 output = function(cb) {
-  input.instagram.media.popular({
+  $.instagram.media.popular({
     complete: function(val, pagination) {
       cb({ out: val, pagination: pagination });
       done();

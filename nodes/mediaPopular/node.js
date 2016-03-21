@@ -1,7 +1,7 @@
 output = function(cb) {
   input.instagram.media.popular({
-    complete: function(data, pagination) {
-      cb({ out: data, pagination: pagination });
+    complete: function(val, pagination) {
+      cb({ out: val, pagination: pagination });
       done();
     },
     error: function(err) {

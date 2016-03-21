@@ -2,8 +2,8 @@ output = function(cb) {
 
   var opts = input.options;
 
-  opts.complete = function(data, pagination) {
-    cb({ out: data, pagination: pagination });
+  opts.complete = function(val, pagination) {
+    cb({ out: val, pagination: pagination });
     done();
   };
 

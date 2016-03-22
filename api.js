@@ -30,11 +30,11 @@ module.exports = {
       "instagram-node-lib": require('instagram-node-lib')
     }
   },
-  fn: function api(input, output, state, done, cb, on, instagram_node_lib) {
+  fn: function api(input, $, output, state, done, cb, on, instagram_node_lib) {
     var r = function() {
-      if (input.client_id) instagram_node_lib.set('client_id', input.client_id);
-      if (input.client_secret) instagram_node_lib.set('client_secret', input.client_secret);
-      output.instagram = instagram_node_lib;
+      if ($.client_id) instagram_node_lib.set('client_id', $.client_id);
+      if ($.client_secret) instagram_node_lib.set('client_secret', $.client_secret);
+      output.instagram = $.create(instagram_node_lib);
     }.call(this);
     return {
       output: output,

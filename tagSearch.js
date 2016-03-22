@@ -33,20 +33,20 @@ module.exports = {
       }
     }
   },
-  fn: function tagSearch(input, output, state, done, cb, on) {
+  fn: function tagSearch(input, $, output, state, done, cb, on) {
     var r = function() {
-      input.instagram.tags.search({
-        q: input.tag,
-        complete: function(data, pagination) {
+      $.instagram.tags.search({
+        q: $.tag,
+        complete: function(val, pagination) {
           output({
-            out: data,
-            pagination: pagination
+            out: $.create(val),
+            pagination: $.create(pagination)
           });
           done();
         },
         error: function(err) {
           output({
-            error: err
+            error: $.create(err)
           });
         }
       });

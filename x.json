@@ -42,7 +42,7 @@
       "description": "Instagram API",
       "ns": "instagram",
       "name": "api",
-      "fn": "if(input.client_id) instagram_node_lib.set('client_id', input.client_id);\nif(input.client_secret) instagram_node_lib.set('client_secret', input.client_secret);\noutput.instagram = instagram_node_lib;\n"
+      "fn": "if($.client_id) instagram_node_lib.set('client_id', $.client_id);\nif($.client_secret) instagram_node_lib.set('client_secret', $.client_secret);\noutput.instagram = $.create(instagram_node_lib);\n"
     },
     {
       "ports": {
@@ -91,7 +91,7 @@
       "description": "Comment on a media item",
       "ns": "instagram",
       "name": "comment",
-      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.comment(opts);\n};\n"
+      "fn": "output = function(cb) {\n  var opts = $.options;\n\n  opts.complete = function(val, pagination) {\n    cb({ out: $.create(val), pagination: $.create(pagination) });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: $.create(err) });\n  };\n\n  $.instagram.media.comment(opts);\n};\n"
     },
     {
       "ports": {
@@ -135,7 +135,7 @@
       "description": "Get comments on a media",
       "ns": "instagram",
       "name": "comments",
-      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.comments(opts);\n};\n"
+      "fn": "output = function(cb) {\n  var opts = $.options;\n\n  opts.complete = function(val, pagination) {\n    cb({ out: $.create(val), pagination: $.create(pagination) });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: $.create(err) });\n  };\n\n  $.instagram.media.comments(opts);\n};\n"
     },
     {
       "ports": {
@@ -179,7 +179,7 @@
       "description": "Like a media item",
       "ns": "instagram",
       "name": "like",
-      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.like(opts);\n};\n"
+      "fn": "output = function(cb) {\n  var opts = $.options;\n\n  opts.complete = function(val, pagination) {\n    cb({ out: $.create(val), pagination: $.create(pagination) });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: $.create(err) });\n  };\n\n  $.instagram.media.like(opts);\n};\n"
     },
     {
       "ports": {
@@ -223,7 +223,7 @@
       "description": "Returns an array of likers for the media",
       "ns": "instagram",
       "name": "likes",
-      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.likes(opts);\n};\n"
+      "fn": "output = function(cb) {\n  var opts = $.options;\n\n  opts.complete = function(val, pagination) {\n    cb({ out: $.create(val), pagination: $.create(pagination) });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: $.create(err) });\n  };\n\n  $.instagram.media.likes(opts);\n};\n"
     },
     {
       "ports": {
@@ -267,7 +267,7 @@
       "description": "Get the metadata for a single medai item by media id.",
       "ns": "instagram",
       "name": "mediaInfo",
-      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.likes(opts);\n};\n"
+      "fn": "output = function(cb) {\n\n  var opts = $.options;\n\n  opts.complete = function(val, pagination) {\n    cb({ out: $.create(val), pagination: $.create(pagination) });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: $.create(err) });\n  };\n\n  $.instagram.media.likes(opts);\n};\n"
     },
     {
       "ports": {
@@ -299,7 +299,7 @@
       "description": "Get a set of 32 current popular media, each with it's associated likes and comments.",
       "ns": "instagram",
       "name": "mediaPopular",
-      "fn": "output = function(cb) {\n  input.instagram.media.popular({\n    complete: function(data, pagination) {\n      cb({ out: data, pagination: pagination });\n      done();\n    },\n    error: function(err) {\n      cb({ error: err });\n    }\n  });\n};\n"
+      "fn": "output = function(cb) {\n  $.instagram.media.popular({\n    complete: function(val, pagination) {\n      cb({ out: $.create(val), pagination: $.create(pagination) });\n      done();\n    },\n    error: function(err) {\n      cb({ error: $.create(err) });\n    }\n  });\n};\n"
     },
     {
       "ports": {
@@ -353,7 +353,7 @@
       "description": "With a latitude and longitude find nearby media by geography.",
       "ns": "instagram",
       "name": "mediaSearch",
-      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.info(opts);\n};\n"
+      "fn": "output = function(cb) {\n  var opts = $.options;\n\n  opts.complete = function(val, pagination) {\n    cb({ out: $.create(val), pagination: $.create(pagination) });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: $.create(err) });\n  };\n\n  $.instagram.media.info(opts);\n};\n"
     },
     {
       "ports": {
@@ -390,7 +390,7 @@
       "description": "Instagram Tag Info",
       "ns": "instagram",
       "name": "tagInfo",
-      "fn": "output = function(cb) {\n  input.instagram.tags.info({\n    name: input.tag,\n    complete: function(data, pagination) {\n      cb({ out: data, pagination: pagination });\n      done();\n    },\n    error: function(err) {\n      cb({ error: err });\n    }\n  });\n};\n"
+      "fn": "output = function(cb) {\n  $.instagram.tags.info({\n    name: $.tag,\n    complete: function(val, pagination) {\n      cb({ out: $.create(val), pagination: $.create(pagination) });\n      done();\n    },\n    error: function(err) {\n      cb({ error: $.create(err) });\n    }\n  });\n};\n"
     },
     {
       "ports": {
@@ -427,7 +427,7 @@
       "description": "Get media tagged with the tag recently",
       "ns": "instagram",
       "name": "tagRecent",
-      "fn": "output = function(cb) {\n  input.instagram.tags.recent({\n    name: input.tag,\n    complete: function(data, pagination) {\n      cb({ out: data, pagination: pagination });\n      done();\n    },\n    error: function(err) {\n      cb({ error: err });\n    }\n  });\n};\n"
+      "fn": "output = function(cb) {\n  $.instagram.tags.recent({\n    name: $.tag,\n    complete: function(val, pagination) {\n      cb({ out: $.create(val), pagination: $.create(pagination) });\n      done();\n    },\n    error: function(err) {\n      cb({ error: $.create(err) });\n    }\n  });\n};\n"
     },
     {
       "ports": {
@@ -464,7 +464,7 @@
       "description": "Search for matching tags by name",
       "ns": "instagram",
       "name": "tagSearch",
-      "fn": "output = function(cb) {\n  input.instagram.tags.search({\n    q: input.tag,\n    complete: function(data, pagination) {\n      cb({ out: data, pagination: pagination });\n      done();\n    },\n    error: function(err) {\n      cb({ error: err });\n    }\n  });\n};\n"
+      "fn": "output = function(cb) {\n  $.instagram.tags.search({\n    q: $.tag,\n    complete: function(val, pagination) {\n      cb({ out: $.create(val), pagination: $.create(pagination) });\n      done();\n    },\n    error: function(err) {\n      cb({ error: $.create(err) });\n    }\n  });\n};\n"
     },
     {
       "ports": {
@@ -513,7 +513,7 @@
       "description": "Remove a comment on a media item",
       "ns": "instagram",
       "name": "uncomment",
-      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.uncomment(opts);\n};\n"
+      "fn": "output = function(cb) {\n  var opts = $.options;\n\n  opts.complete = function(val, pagination) {\n    cb({ out: $.create(val), pagination: $.create(pagination) });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: $.create(err) });\n  };\n\n  $.instagram.media.uncomment(opts);\n};\n"
     },
     {
       "ports": {
@@ -557,7 +557,7 @@
       "description": "Unlike a media item",
       "ns": "instagram",
       "name": "unlike",
-      "fn": "output = function(cb) {\n\n  var opts = input.options;\n\n  opts.complete = function(data, pagination) {\n    cb({ out: data, pagination: pagination });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: err });\n  };\n\n  input.instagram.media.unlike(opts);\n};\n"
+      "fn": "output = function(cb) {\n  var opts = $.options;\n\n  opts.complete = function(val, pagination) {\n    cb({ out: $.create(val), pagination: $.create(pagination) });\n    done();\n  };\n\n  opts.error = function(err) {\n    cb({ error: $.create(err) });\n  };\n\n  $.instagram.media.unlike(opts);\n};\n"
     }
   ],
   "twigs": []

@@ -28,19 +28,19 @@ module.exports = {
       }
     }
   },
-  fn: function mediaPopular(input, output, state, done, cb, on) {
+  fn: function mediaPopular(input, $, output, state, done, cb, on) {
     var r = function() {
-      input.instagram.media.popular({
-        complete: function(data, pagination) {
+      $.instagram.media.popular({
+        complete: function(val, pagination) {
           output({
-            out: data,
-            pagination: pagination
+            out: $.create(val),
+            pagination: $.create(pagination)
           });
           done();
         },
         error: function(err) {
           output({
-            error: err
+            error: $.create(err)
           });
         }
       });

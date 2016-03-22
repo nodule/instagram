@@ -45,25 +45,25 @@ module.exports = {
       }
     }
   },
-  fn: function uncomment(input, output, state, done, cb, on) {
+  fn: function uncomment(input, $, output, state, done, cb, on) {
     var r = function() {
-      var opts = input.options;
+      var opts = $.options;
 
-      opts.complete = function(data, pagination) {
+      opts.complete = function(val, pagination) {
         output({
-          out: data,
-          pagination: pagination
+          out: $.create(val),
+          pagination: $.create(pagination)
         });
         done();
       };
 
       opts.error = function(err) {
         output({
-          error: err
+          error: $.create(err)
         });
       };
 
-      input.instagram.media.uncomment(opts);
+      $.instagram.media.uncomment(opts);
     }.call(this);
     return {
       output: output,
